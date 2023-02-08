@@ -1,5 +1,30 @@
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner input = new Scanner(System.in);
+        Controller c = new Controller();
+        int qty = 0;
+        ArrayList<Integer> rawData;
+        ArrayList<Integer> fileData;
+        System.out.println("Bienvenido al programa de ordenamiento de datos");
+        while (true) {
+            System.out.println("Ingrese la cantidad de datos que desea generar");
+            String str = input.next();
+            try {
+                qty = Integer.parseInt(str);
+                break;
+            } catch (NumberFormatException ne) {
+                System.out.println("Ingrese un numero entero");
+            }
+        }
+        c.CreateFile();
+        rawData = c.DataGenerator(qty);
+        c.WriteFile(rawData);
+        fileData = c.ReadFile();
+
+        System.out.println(fileData);
     }
 }
