@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
         Controller c = new Controller();
+        GnomeSort gnomeSort = new GnomeSort();
         int qty = 0;
         int[] rawData;
         int[] fileData;
@@ -24,6 +25,9 @@ public class Main {
         rawData = c.DataGenerator(qty);
         c.WriteFile(rawData);
         fileData = c.ReadFile();
-        System.out.println(fileData);
+        gnomeSort.gnomeSort(fileData, fileData.length);
+        for (int i = 0; i<fileData.length;i++){
+            System.out.println(fileData[i]);
+        }
     }
 }
