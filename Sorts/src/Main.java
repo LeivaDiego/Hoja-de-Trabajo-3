@@ -7,8 +7,8 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Controller c = new Controller();
         int qty = 0;
-        ArrayList<Integer> rawData;
-        ArrayList<Integer> fileData;
+        int[] rawData;
+        int[] fileData;
         System.out.println("Bienvenido al programa de ordenamiento de datos");
         while (true) {
             System.out.println("Ingrese la cantidad de datos que desea generar");
@@ -24,7 +24,6 @@ public class Main {
         rawData = c.DataGenerator(qty);
         c.WriteFile(rawData);
         fileData = c.ReadFile();
-
         System.out.println(fileData);
     }
 }

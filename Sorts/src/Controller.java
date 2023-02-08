@@ -25,15 +25,16 @@ public class Controller {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    public ArrayList<Integer> DataGenerator(int max){
-        ArrayList<Integer> RandomNumbers = new ArrayList<Integer>();
+    public int[] DataGenerator(int max){
+        int[] randoms;
+        randoms = new int[max];
         for (int i = 0; i<max;i++){
-            RandomNumbers.add(getRandomNumber(0, 3000));
+            randoms[i] = getRandomNumber(0,3000);
         }
-        return RandomNumbers;
+        return randoms;
     }
 
-    public void WriteFile(ArrayList<Integer> data){
+    public void WriteFile(int[] data){
         try {
             FileWriter writer = new FileWriter("data.txt");
             for (Integer num: data){
@@ -46,7 +47,7 @@ public class Controller {
         }
     }
 
-    public ArrayList<Integer> ReadFile() throws FileNotFoundException {
+    public int[] ReadFile() throws FileNotFoundException {
         Scanner s = new Scanner(new File("data.txt"));
         ArrayList<Integer> list = new ArrayList<Integer>();
         while (s.hasNext()){
@@ -54,6 +55,7 @@ public class Controller {
             list.add(value);
         }
         s.close();
-        return list;
+        int[] arr = list.stream().mapToInt(i -> i).toArray();
+        return arr;
     }
 }

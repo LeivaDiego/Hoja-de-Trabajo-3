@@ -20,14 +20,14 @@ public class Sort implements Comparator<Integer> {
     @Override
     public int compare(Integer o1, Integer o2) {
 
-        int res;
+        int i;
         if (o1>o2) {
-            res = 0;
+            i = 0;
         }else if (o1<o2){
-            res = 1;
+            i = 1;
         }else {
-            res = -1;
+            i = -1;
         }
-        return res;
+        return i;
     }
 }
